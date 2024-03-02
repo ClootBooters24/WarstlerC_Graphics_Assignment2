@@ -7,7 +7,7 @@
 #include <GL/glut.h>
 #endif
 
-// Global constants
+//Global constants
 #define MIN_X_VIEW -50
 #define MAX_X_VIEW 50
 #define MIN_Y_VIEW -50
@@ -21,7 +21,7 @@
 #define LINE_COUNT 100000
 #define MAX_COUNT 10000
 
-// Global variables 
+//Global variables 
 float Px[MAX_COUNT], Py[MAX_COUNT];
 int count = 0;
 float coords[MAX_COUNT][MAX_COUNT];
@@ -33,13 +33,13 @@ void ufo() {
    static int currentNode = 0;
    static float progress = 0.0;
 
-	//If it hits the last node, reset
+   //If it hits the last node, reset
    if (currentNode >= count) {
       currentNode = 0;
       progress = 0.0;
       return;
    }
-	//If it finishes moving along the line, go to next line
+   //If it finishes moving along the line, go to next line
    progress += 0.01;
    if (progress > 1.0) {
       progress = 0.0;
@@ -107,7 +107,7 @@ void keyboard(unsigned char key, int x, int y)
 //---------------------------------------
 void mouse(int button, int state, int x, int y)
 {
-      // Calculate scale factors
+   //Calculate scale factors
    float x_scale = (MAX_X_VIEW - MIN_X_VIEW) / 
       (float)(MAX_X_SCREEN - MIN_X_SCREEN);
    float y_scale = (MIN_Y_VIEW - MAX_Y_VIEW) / 
@@ -120,7 +120,7 @@ void mouse(int button, int state, int x, int y)
       coords[0][0] = Px[0], coords[0][1] = Py[0];
    }
 
-   // Handle mouse down
+   //Handle mouse down
    if (state == GLUT_DOWN)
    {
       //Update count and store coords
@@ -148,7 +148,7 @@ void display()
       glVertex2f(Px[i], Py[i]);
    glEnd();
 
-	//Only do ufo functions if 'u' is pressed and ufoStart == true
+   //Only do ufo functions if 'u' is pressed and ufoStart == true
    if (ufoStart) {
       ufo();
    }
